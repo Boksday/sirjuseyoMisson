@@ -1,0 +1,67 @@
+<template>
+  <v-card class="d-inline-block mx-auto">
+    <v-container>
+      <v-row justify="space-between">
+        <v-col cols="auto">
+            <v-img :src="contact.photo" width="200px" height="200px"></v-img>
+        </v-col>
+
+        <v-col
+          cols="auto"
+          class="text-center pl-0"
+        >
+          <v-row
+            class="flex-column ma-0 fill-height"
+            justify="center"
+          >
+            <v-col class="px-0">
+                <v-icon>mdi-account</v-icon> {{contact.name}}
+            </v-col>
+
+            <v-col class="px-0">
+              <v-icon>mdi-map-marker</v-icon> {{contact.address}}
+            </v-col>
+
+            <v-col class="px-0">
+              <v-icon>mdi-phone</v-icon> {{contact.tel}}
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+
+      <v-card-actions class="align-end">
+            <v-spacer/>
+            <v-btn color="primary" @click="goRouter('/contacts')">목록</v-btn>
+            <v-btn class="btn deleteBtn" color="error" @click="delContact(contact.no)">삭제</v-btn>
+      </v-card-actions>
+    </v-container>
+  </v-card>
+</template>
+
+<script>
+import { mapState, mapActions } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      contact: (state) => state.contacts.contact
+    })
+  },
+  methods: {
+    ...mapActions(['getOneContact', 'deleteContact']),
+    goRouter (url) {
+      this.$router.push(url)
+    },
+    delContact (no) {
+      if (confirm('정말 삭제하시겠습니까?')) {
+        this.deleteContact(no).then((res) => {
+          this.$router.push('/contacts')
+        })
+      }
+    }
+  },
+  created () {
+    console.log('ㅇㅇ')
+    this.getOneContact(this.$route.params.no)
+  }
+}
+</script>
