@@ -1,5 +1,5 @@
-import MutationTypes from '../../mutationTypes'
-import contactsApi from '../../../api/contactsApi'
+import MutationTypes from '@/js/store/mutationTypes'
+import contactsApi from '@/js/api/contactsApi'
 
 export default {
   getContacts: async ({ commit }, payload) => {

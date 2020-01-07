@@ -4,15 +4,15 @@
       app
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item link @click="goRouter('/')">
 
           <v-list-item-content>
-            <v-list-item-title @click="goRouter('/')">Home</v-list-item-title>
+            <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link @click="goRouter('/contacts')">
           <v-list-item-content>
-            <v-list-item-title @click="goRouter('/contacts')">연락처</v-list-item-title>
+            <v-list-item-title >연락처</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

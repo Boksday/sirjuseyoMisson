@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '../components/views/Home.vue'
-import Contacts from '../components/views/Contacts'
-import ContactDetail from '../components/views/ContactDetail'
-import AddContact from '../components/views/AddContact'
+import Home from '@/js/components/views/Home.vue'
+import Contacts from '@/js/components/views/Contacts'
+import ContactDetail from '@/js/components/views/ContactDetail'
+import AddContact from '@/js/components/views/AddContact'
 
 Vue.use(VueRouter)
 

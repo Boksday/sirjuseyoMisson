@@ -1,16 +1,17 @@
 <template>
   <v-card
     v-if="contact"
-    class="d-inline-block mx-auto">
+    class="d-inline-block mx-auto"
+    min-width="500px">
     <v-container>
-      <v-row justify="space-between">
+      <v-row>
         <v-col cols="auto">
             <v-img :src="contact.photo" width="200px" height="200px"></v-img>
         </v-col>
 
         <v-col
           cols="auto"
-          class="text-center pl-0"
+          class="pl-0"
         >
           <v-row
             class="flex-column ma-0 fill-height"

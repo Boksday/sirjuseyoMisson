@@ -1,5 +1,5 @@
 
-import MUTATION_TYPES from '../../mutationTypes'
+import MUTATION_TYPES from '@/js/store/mutationTypes'
 
 export default {
   [MUTATION_TYPES.SET_CONTACTS]: (state, payload) => {

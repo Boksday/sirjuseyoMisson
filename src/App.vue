@@ -12,6 +12,7 @@
         </v-layout>
       </v-container>
     </v-content>
+
     <Footer />
   </v-app>
 </template>

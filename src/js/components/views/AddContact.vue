@@ -1,9 +1,10 @@
 <template>
-  <v-card class="d-inline-block mx-auto">
+  <v-card class="d-inline-block mx-auto"
+    min-width="500px">
     <v-container>
       <v-row justify="space-between">
         <v-col
-          cols="auto"
+          cols="12"
           class="text-center pl-0"
         >
           <v-row

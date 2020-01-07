@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-btn color="primary" @click="goRouter('/contact/add')">연락처 추가</v-btn>
+
   <v-simple-table>
     <template v-slot:default>
       <thead>
@@ -26,12 +26,15 @@
       </tbody>
     </template>
   </v-simple-table>
+  <div class="contact-add-btn-wrapper">
+    <v-btn color="primary" @click="goRouter('/contact/add')">연락처 추가</v-btn>
+  </div>
   <v-container>
     <v-row justify="center" @click="goPage">
       <v-col cols="8">
         <v-container class="max-width">
           <v-pagination
-            v-model="page"
+            v-model="currentPage"
             class="my-4"
             :length="totalPages"
             :total-visible="9"
@@ -46,12 +49,13 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { CONFIG } from '@/js/constants'
 
 export default {
   data () {
     return {
-      page: 1,
-      pagesize: 5
+      currentPage: 1,
+      pageSize: CONFIG.ITEMS_PER_PAGE
     }
   },
   computed: {
@@ -59,15 +63,13 @@ export default {
       contacts: (state) => state.contacts.contacts,
       contactDetail: (state) => state.contacts.contact
     }),
-
     totalPages () {
-      const total = Math.ceil(this.contacts.totalcount / this.pagesize)
+      const total = Math.ceil(this.contacts.totalcount / this.pageSize)
       return total > 0 ? total : 0
     }
   },
   methods: {
     ...mapActions(['getContacts', 'getContact', 'deleteContact']),
-
     getContact (no) {
       this.$router.push(`/contacts/${no}`)
     },
@@ -83,15 +85,15 @@ export default {
     },
     goPage () {
       this.getContacts({
-        pageno: this.page,
-        pagesize: this.pagesize
+        pageNo: this.currentPage,
+        pageSize: this.pageSize
       })
     }
   },
   created () {
     this.getContacts({
-      pageno: this.page,
-      pagesize: this.pagesize
+      pageNo: this.currentPage,
+      pageSize: this.pageSize
     })
   }
 }
@@ -106,5 +108,9 @@ export default {
     text-align: center;
     border : 1px #e1e1e1 solid;
     margin-bottom : 1px;
+  }
+  .contact-add-btn-wrapper{
+    text-align: right;
+    margin-top: 10px;
   }
 </style>
