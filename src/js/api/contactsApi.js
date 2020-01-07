@@ -1,13 +1,13 @@
 import { apiClient } from '../network/HttpClientFactory'
 
 export default {
-  getContacts () {
-    const res = apiClient.get('/contacts')
+  getContacts (data) {
+    const res = apiClient.get(`/contacts?pageno=${data.pageno}&pagesize=${data.pagesize}`)
     return res
   },
 
-  getOneContact (no) {
-    const res = apiClient.get('/contacts/' + no)
+  getContact (no) {
+    const res = apiClient.get(`/contacts/${no}`)
     return res
   },
 
@@ -17,7 +17,7 @@ export default {
   },
 
   deleteContact (no) {
-    const res = apiClient.delete('/contacts/' + no)
+    const res = apiClient.delete(`/contacts/${no}`)
     return res
   }
 }

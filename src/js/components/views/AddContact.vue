@@ -54,7 +54,6 @@ export default {
       }
       this.addContact(contact).then((res) => {
         if (res) {
-          console.log(res)
           this.$router.push('/contacts')
         }
       })

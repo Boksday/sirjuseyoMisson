@@ -2,16 +2,12 @@ import MutationTypes from '../../mutationTypes'
 import contactsApi from '../../../api/contactsApi'
 
 export default {
-  getContacts: async ({ commit }) => {
-    await contactsApi.getContacts().then((res) => {
-      commit(MutationTypes.SET_CONTACTS, res.data)
-    })
+  getContacts: async ({ commit }, payload) => {
+    await contactsApi.getContacts(payload).then((res) => commit(MutationTypes.SET_CONTACTS, res.data))
   },
 
-  getOneContact: async ({ commit }, payload) => {
-    await contactsApi.getOneContact(payload).then((res) => {
-      commit(MutationTypes.SET_CONTACT, res.data)
-    })
+  getContact: async ({ commit }, payload) => {
+    await contactsApi.getContact(payload).then((res) => commit(MutationTypes.SET_CONTACT, res.data))
   },
 
   addContact: async ({ commit }, payload) => {
@@ -28,8 +24,6 @@ export default {
   },
 
   deleteContact: async ({ commit }, no) => {
-    await contactsApi.deleteContact(no).then((res) => {
-      console.log(res)
-    })
+    await contactsApi.deleteContact(no).then((res) => console.log(`[DELETE STATUS] ${res}`))
   }
 }

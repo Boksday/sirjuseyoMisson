@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '../components/views/Home.vue'
 import Contacts from '../components/views/Contacts'
-import Contact from '../components/views/ContactDetail'
+import ContactDetail from '../components/views/ContactDetail'
 import AddContact from '../components/views/AddContact'
 
 Vue.use(VueRouter)
@@ -22,16 +22,11 @@ const routes = [
   {
     path: '/contacts/:no',
     name: 'contact',
-    component: Contact
-  },
-  {
-    path: '/contacts/:no',
-    name: 'contact',
-    component: Contact
+    component: ContactDetail
   },
   {
     path: '/addContact',
-    name: 'contact',
+    name: 'addContact',
     component: AddContact
   }
 

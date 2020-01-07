@@ -26,6 +26,11 @@ export default {
     goRouter (url) {
       this.$router.push(url)
     }
+  },
+  data () {
+    return {
+      drawer: null
+    }
   }
 }
 </script>

@@ -1,5 +1,7 @@
 <template>
-  <v-card class="d-inline-block mx-auto">
+  <v-card
+    v-if="contact"
+    class="d-inline-block mx-auto">
     <v-container>
       <v-row justify="space-between">
         <v-col cols="auto">
@@ -32,14 +34,14 @@
       <v-card-actions class="align-end">
             <v-spacer/>
             <v-btn color="primary" @click="goRouter('/contacts')">목록</v-btn>
-            <v-btn class="btn deleteBtn" color="error" @click="delContact(contact.no)">삭제</v-btn>
+            <v-btn class="btn deleteBtn" color="error" @click="onClickDeleteButton(contact.no)">삭제</v-btn>
       </v-card-actions>
     </v-container>
   </v-card>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
@@ -47,21 +49,18 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['getOneContact', 'deleteContact']),
+    ...mapActions(['getContact', 'deleteContact']),
     goRouter (url) {
       this.$router.push(url)
     },
-    delContact (no) {
+    onClickDeleteButton (no) {
       if (confirm('정말 삭제하시겠습니까?')) {
-        this.deleteContact(no).then((res) => {
-          this.$router.push('/contacts')
-        })
+        this.deleteContact(no).then((res) => this.$router.push('/contacts'))
       }
     }
   },
   created () {
-    console.log('ㅇㅇ')
-    this.getOneContact(this.$route.params.no)
+    this.getContact(this.$route.params.no)
   }
 }
 </script>

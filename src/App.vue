@@ -1,30 +1,7 @@
 <template>
   <v-app id="inspire">
-        <v-navigation-drawer
-      v-model="drawer"
-      app
-    >
-      <v-list dense>
-        <v-list-item link>
-
-          <v-list-item-content>
-            <v-list-item-title @click="goRouter('/')">Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-content>
-            <v-list-item-title @click="goRouter('/contacts')">연락처</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      app
-      color="indigo"
-      dark
-    >
-      <v-toolbar-title>연락처 Application</v-toolbar-title>
-    </v-app-bar>
+    <Aside />
+    <Header />
 
     <v-content>
       <v-container fluid fill-height>
@@ -35,20 +12,19 @@
         </v-layout>
       </v-container>
     </v-content>
-
-    <v-footer
-      color="indigo"
-      app
-    >
-      <span class="white--text">&copy; 2019</span>
-    </v-footer>
+    <Footer />
   </v-app>
 </template>
 
 <script>
+import Aside from './js/components/layout/Aside'
+import Header from './js/components/layout/Header'
+import Footer from './js/components/layout/Footer'
 
 export default {
-
+  components: {
+    Aside, Header, Footer
+  },
   data () {
     return {
       drawer: null
