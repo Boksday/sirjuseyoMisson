@@ -25,7 +25,7 @@ const routes = [
     component: ContactDetail
   },
   {
-    path: '/addContact',
+    path: '/contact/add',
     name: 'addContact',
     component: AddContact
   }

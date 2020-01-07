@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-btn color="primary" @click="goRouter('/addContact')">연락처 추가</v-btn>
+  <v-btn color="primary" @click="goRouter('/contact/add')">연락처 추가</v-btn>
   <v-simple-table>
     <template v-slot:default>
       <thead>
